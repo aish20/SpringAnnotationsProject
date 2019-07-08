@@ -27,9 +27,9 @@ public  TennisCoach() {
 }
 	
 @Autowired
-public void setFortuneService(FortuneService theFortuneService)
+public void doSomeCrazyStuff(FortuneService theFortuneService)
 {
-	System.out.println("Inside setter method for setter injection");
+	System.out.println("Inside doSomeCrazyStuff for setter injection");
 	fortuneService = theFortuneService;
 }
 	
