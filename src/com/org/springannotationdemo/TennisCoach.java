@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class TennisCoach implements Coach {
 	
+	//Field Injection even if this field is private it will still inject the dependencies.
+	// What spring will gonna do is it will create the constructor first and then actually inject the dependencies ie., fortune service into the class making use of reflection  
+	@Autowired
 	private FortuneService fortuneService;
 
 	//Here Spring will gonna scan for the component that implements FortuneService Interface 
@@ -23,15 +26,14 @@ public class TennisCoach implements Coach {
 	
 public  TennisCoach() {
 	
-	System.out.println("inside the defaltu constructor");
+	System.out.println("inside the default constructor");
 }
 	
-@Autowired
-public void doSomeCrazyStuff(FortuneService theFortuneService)
-{
-	System.out.println("Inside doSomeCrazyStuff for setter injection");
-	fortuneService = theFortuneService;
-}
+	/*
+	 * @Autowired public void doSomeCrazyStuff(FortuneService theFortuneService) {
+	 * System.out.println("Inside doSomeCrazyStuff for setter injection");
+	 * fortuneService = theFortuneService; }
+	 */
 	
 	@Override
 	public String getDailyWorkout() {
