@@ -8,6 +8,10 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
 
+<!-- load the property file -->
+
+<context:property-placeholder location = "classpath:sports.properties"/>
+
 <!-- add an entry to enable component scanning -->
 
 
