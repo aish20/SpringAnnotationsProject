@@ -3,6 +3,7 @@ package com.org.springannotationdemo;
 import java.io.ObjectInputStream.GetField;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 
@@ -13,7 +14,8 @@ public class TennisCoach implements Coach {
 	
 	//Field Injection even if this field is private it will still inject the dependencies.
 	// What spring will gonna do is it will create the constructor first and then actually inject the dependencies ie., fortune service into the class making use of reflection  
-	@Autowired
+	//@Autowired
+	//@Qualifier("randomFortuneService")
 	private FortuneService fortuneService;
 
 	//Here Spring will gonna scan for the component that implements FortuneService Interface 
@@ -29,6 +31,15 @@ public  TennisCoach() {
 	System.out.println("inside the default constructor");
 }
 	
+// using and testing @Qualifier with the constructor
+
+@Autowired
+public TennisCoach(@Qualifier("randomFortuneService") FortuneService fortuneService)
+{
+	System.out.println("Inside parametrised constructor");
+	
+	this.fortuneService = fortuneService;
+}
 	/*
 	 * @Autowired public void doSomeCrazyStuff(FortuneService theFortuneService) {
 	 * System.out.println("Inside doSomeCrazyStuff for setter injection");
