@@ -10,19 +10,31 @@ import org.springframework.stereotype.Component;
 // so this id will help us to later time retrieve this bean from the spring container
 @Component
 public class TennisCoach implements Coach {
+	
+	private FortuneService fortuneService;
 
 	//Here Spring will gonna scan for the component that implements FortuneService Interface 
 	// eg - in our case HappyFortuneService now spring will create instance of it and inject it into our tennis coach
-	//@Autowired
-	public TennisCoach(FortuneService fortuneService)
-	{
-		this.fortuneService = fortuneService;
-	}
 	
-	private FortuneService fortuneService;
+	/*
+	 * @Autowired public TennisCoach(FortuneService fortuneService) {
+	 * this.fortuneService = fortuneService; }
+	 */
+	
+public  TennisCoach() {
+	
+	System.out.println("inside the defaltu constructor");
+}
+	
+@Autowired
+public void setFortuneService(FortuneService theFortuneService)
+{
+	System.out.println("Inside setter method for setter injection");
+	fortuneService = theFortuneService;
+}
+	
 	@Override
 	public String getDailyWorkout() {
-		
 		return "practice your backhand volley";
 	}
 
