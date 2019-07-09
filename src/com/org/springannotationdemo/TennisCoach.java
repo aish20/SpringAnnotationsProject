@@ -2,6 +2,9 @@ package com.org.springannotationdemo;
 
 import java.io.ObjectInputStream.GetField;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -11,7 +14,6 @@ import org.springframework.stereotype.Component;
 // when spring scan the packages it will gonna find this class and it will automatically register this bean with the spring container and uses the bean id of thatSillyCoach 
 // so this id will help us to later time retrieve this bean from the spring container
 @Component
-@Scope("prototype")
 public class TennisCoach implements Coach {
 	
 	//Field Injection even if this field is private it will still inject the dependencies.
@@ -32,6 +34,28 @@ public  TennisCoach() {
 	
 	System.out.println("inside the default constructor");
 }
+
+
+
+// define my init method
+@PostConstruct
+public void doMyStartUpStuff()
+
+{
+	System.out.println("Tennis Coach inside do my startup stuff");
+}
+
+// define my destroy method
+
+@PreDestroy
+public void endWithThisMethod()
+{
+	System.out.println("Tennis Coach do my clean up stuff");
+}
+
+
+
+
 	
 // using and testing @Qualifier with the constructor
 
