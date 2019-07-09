@@ -15,7 +15,7 @@ public class YogaJavaConfigDemoApp {
 		
 		//get the bean from the spring container
 		
-		Coach theCoach = context.getBean("yogaCoach",Coach.class);
+		YogaCoach theCoach = context.getBean("yogaCoach",YogaCoach.class);
 		
 		//call the method on the bean 
 		
@@ -24,6 +24,10 @@ public class YogaJavaConfigDemoApp {
 		//call the new method of daily fortune method
 		
 		System.out.println(theCoach.getDailyFortune());
+		
+		System.out.println("email id ="+theCoach.getEmailAddress());
+		
+		System.out.println("team ="+theCoach.getTeam());
 		
 		//close the context 
 		

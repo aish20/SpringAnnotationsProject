@@ -3,9 +3,11 @@ package com.org.springannotationdemo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 //@ComponentScan("com.org.springannotationdemo")
+@PropertySource("classpath:sports.properties")
 public class SportConfig {
 
 	
