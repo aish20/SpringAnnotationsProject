@@ -4,12 +4,14 @@ import java.io.ObjectInputStream.GetField;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 
 // when spring scan the packages it will gonna find this class and it will automatically register this bean with the spring container and uses the bean id of thatSillyCoach 
 // so this id will help us to later time retrieve this bean from the spring container
 @Component
+@Scope("prototype")
 public class TennisCoach implements Coach {
 	
 	//Field Injection even if this field is private it will still inject the dependencies.
